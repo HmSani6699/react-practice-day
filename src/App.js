@@ -4,22 +4,25 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DisplayInfo name="Alia bart" address="Oganda"></DisplayInfo>
+      <DisplayInfo name="Noman" address="Momensahi"></DisplayInfo>
+      <DisplayInfo name="Sani" address="Dhaka"></DisplayInfo>
     </div>
   );
+}
+const displayStyle = {
+  border: '2px solid',
+  backgroundColor: 'orange',
+  margin: '20px',
+  borderRadius: '20px'
+}
+function DisplayInfo(props) {
+  return (
+    <div /* className='display-info' */ style={displayStyle}>
+      <h1 style={{ color: 'cadetblue' }}>Name: {props.name}</h1>
+      <p>Address: {props.address}</p>
+    </div>
+  )
 }
 
 export default App;

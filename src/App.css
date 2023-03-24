@@ -32,7 +32,15 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.display-info {
+  background-color: aquamarine;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 20px;
 }
