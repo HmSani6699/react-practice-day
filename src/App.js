@@ -1,16 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   return (
     <div className="App">
+      <LoadPosts></LoadPosts>
       <DisplayInfo name="Alia bart" address="Oganda"></DisplayInfo>
       <DisplayInfo name="Noman" address="Momensahi"></DisplayInfo>
       <DisplayInfo name="Sani" address="Dhaka"></DisplayInfo>
     </div>
   );
 }
+
+function LoadPosts() {
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(res => res.json())
+      .then(data => setPosts(data))
+  }, []);
+  return (
+    <div>
+      <h1>All posts: {posts.length}</h1>
+      {
+        posts.map(post => console.log(post))
+      }
+    </div>
+  )
+}
+
 const displayStyle = {
   border: '2px solid',
   backgroundColor: 'orange',
