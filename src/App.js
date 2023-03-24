@@ -6,9 +6,12 @@ function App() {
   return (
     <div className="App">
       <LoadPosts></LoadPosts>
-      <DisplayInfo name="Alia bart" address="Oganda"></DisplayInfo>
-      <DisplayInfo name="Noman" address="Momensahi"></DisplayInfo>
-      <DisplayInfo name="Sani" address="Dhaka"></DisplayInfo>
+
+      <div className='user-container'>
+        <DisplayInfo name="Alia bart" address="Oganda"></DisplayInfo>
+        <DisplayInfo name="Noman" address="Momensahi"></DisplayInfo>
+        <DisplayInfo name="Sani" address="Dhaka"></DisplayInfo>
+      </div>
     </div>
   );
 }
@@ -21,11 +24,24 @@ function LoadPosts() {
       .then(data => setPosts(data))
   }, []);
   return (
-    <div>
+    <div className='posts-container'>
       <h1>All posts: {posts.length}</h1>
       {
-        posts.map(post => console.log(post))
+        posts.map(post => <Post
+          name={post.title}
+          body={post.body}
+          key={post.id}
+        ></Post>)
       }
+    </div>
+  )
+};
+
+function Post(props) {
+  return (
+    <div style={{ border: '3px solid', margin: '20px', padding: '10px', borderRadius: '20px' }}>
+      <h1>Title: {props.name}</h1>
+      <p>Body: {props.body}</p>
     </div>
   )
 }
